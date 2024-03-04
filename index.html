@@ -1,1 +1,43 @@
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Formulaire</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Information personnelle</legend>
+                <label>Nom</label><input name="nom" id="nom" type="text">
+                <label>Prénom</label><input name="prenom" id="prenom" type="text">
+                <label>Date de naissance</label><input name="naissance" id="naissance" type="date">
+                <label>Lieu de Naissance</label><input name="lieu-naissance" id="lieu-naissance" type="text">
+                <label>Numéro de Telephone</label><input name="telephone" id="telephone" type="text">
+            </fieldset>
+            <fieldset>
+                <legend>Adresse</legend>
+                <label>N°</label><input name="numero" id="numero" type="number">
+                <label>Appelation</label><input name="appelation" id="appelation" type="text">
+                <label>Code Postal</label><input name="code-postal" id="code-postal" type="number">
+                <label>Ville</label><input name="ville" id="ville" type="text">
+            </fieldset>
+            <fieldset>
+                <legend>Hobbies</legend>
+                <label>Sport</label>
+                <input list="sports" name="sport" id="sport">
+                <datalist id="sports">
+                    <option value="Foot">
+                    <option value="Pétanque">
+                    <option value="Rugby">
+                </datalist>
+                <label>Musique</label>
+                <input list="musiques" name="musique" id="musique">
+                <datalist id="musiques">
+                    <option value="Rock">
+                    <option value="Classique">
+                    <option value="Rap">
+                </datalist>
+        </form>
+    </body>
+</html>
