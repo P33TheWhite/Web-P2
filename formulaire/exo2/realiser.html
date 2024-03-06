@@ -7,26 +7,54 @@
     </head>
     <body>
     <h1>Ma pizza</h1>
-    <label>La pâte</label>
-    <select name="pate" id="pate">
-        <option value="Napolitaine">Napolitaine</option>
-        <option value="Romaine">Romaine</option>
-        <option value="Foccacia">Foccacia</option>
-        <option value="New-York">New-York</option>
-        <option value="Sicilienne">Sicilienne</option>
-        <option value="Chicago">Chicago</option>
-    </select>
-    <label>Sauce</label>
-    <select name="sauce" id="sauce">
-        <option value="Tomate">Tomate</option>
-        <option value="Crème">Crème</option>
-    </select>
-    <label>Ingrédient 1</label>
-    <label>Ingrédient 2</label>
-    <label>Ingrédient 3</label>
-    <label>Avez-vous la carte de fidélité ?</label>
-    oui<input name="fideliteY" id="fideliteY" type="radio">
-    non<input name="fideliteN" id="fideliteN" type="radio">
-
+    <form name="realiser" id="realiser" action="commander.html" method="GET">
+        <label>La pâte</label>
+        <select name="pate" id="pate">
+            <option value="Napolitaine">Napolitaine</option>
+            <option value="Romaine">Romaine</option>
+            <option value="Foccacia">Foccacia</option>
+            <option value="New-York">New-York</option>
+            <option value="Sicilienne">Sicilienne</option>
+            <option value="Chicago">Chicago</option>
+        </select>
+        <label>Sauce</label>
+        <select name="sauce" id="sauce">
+            <option value="Tomate">Tomate</option>
+            <option value="Crème">Crème</option>
+        </select>
+        <label>Ingrédient 1</label>
+        <select name="ingredient1" id="ingredient1" size="6">
+            <option value="Jambon">Jambon</option>
+            <option value="Poulet">Poulet</option>
+            <option value="Gruyère">Gruyère</option>
+            <option value="Gorgonzola">Gorgonzola</option>
+            <option value="Oeuf">Oeuf</option>
+            <option value="Parmezan">Parmezan</option>
+        </select>
+        <label>Ingrédient 2</label>
+        <select name="ingredient2" id="ingredient2" size="6">
+            <option value="Jambon">Jambon</option>
+            <option value="Poulet">Poulet</option>
+            <option value="Gruyère">Gruyère</option>
+            <option value="Gorgonzola">Gorgonzola</option>
+            <option value="Oeuf">Oeuf</option>
+            <option value="Parmezan">Parmezan</option>
+        </select>
+        <label>Ingrédient 3</label>
+        <select name="ingredient3" id="ingredient3" size="6">
+            <option value="Jambon">Jambon</option>
+            <option value="Poulet">Poulet</option>
+            <option value="Gruyère">Gruyère</option>
+            <option value="Gorgonzola">Gorgonzola</option>
+            <option value="Oeuf">Oeuf</option>
+            <option value="Parmezan">Parmezan</option>
+        </select>
+        <label>Avez-vous la carte de fidélité ?</label>
+        oui<input name="fidelite" id="fidelite" type="radio">
+        non<input name="fidelite" id="fidelite" type="radio">
+        <br>
+        <input name="inscription" id="inscription" type="submit" value="Valider">
+        <input name="reset" id="reset" type="reset" value="Réinitialiser">
+    </form>
     </body>
 </html>
