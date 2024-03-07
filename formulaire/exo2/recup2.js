@@ -9,7 +9,6 @@ for(i=0;i<listParam.length;i++){
     nom[i] = laListe[0];
     valeur[i] = laListe[1];
 }
-console.log(valeur)
 document.getElementById("nom").innerHTML = valeur[0];
 document.getElementById("prenom").innerHTML = valeur[1];
 document.getElementById("numeroTel").innerHTML = valeur[2];
