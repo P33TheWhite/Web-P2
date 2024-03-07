@@ -2,28 +2,41 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Formulaire</title>
+        <title>Pizza</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" sizes="32x32" href="./pizza.png">
     </head>
     <body>
-        <form name="commander" id="commander" action="livrer.html" method="GET">
-            <fieldset>
-                <legend>Information personnelle</legend>
-                <label>Nom</label><input name="nom" id="nom" type="text">
-                <label>Prénom</label><input name="prenom" id="prenom" type="text">
-                <label>Numéro de Telephone</label><input name="telephone" id="telephone" type="text">
-            </fieldset>
-            <fieldset>
-                <legend>Adresse</legend>
-                <label>N°</label><input name="numero" id="numero" type="number">
-                <label>Appelation</label><input name="appelation" id="appelation" type="text">
-                <label>Code Postal</label><input name="code-postal" id="code-postal" type="number">
-                <label>Ville</label><input name="ville" id="ville" type="text">
-            </fieldset>
-            <br>
-            <input name="inscription" id="inscription" type="submit" value="Valider">
-            <input name="reset" id="reset" type="reset" value="Réinitialiser">
-        </form>
-        <script type="text/javascript" src="recup1.js"></script>
+        <h1>Pizzeria de Paul</h1>
+        <div class="box">
+            <h3>Resumé de la commande</h3>
+            <p id="pate"></p>
+            <p id="base"></p>
+            <p id="ingredient1"></p>
+            <p id="ingredient2"></p>
+            <p id="ingredient3"></p>
+            <p id="fidelité"></p>
+        </div>
+        <div class="box">
+            <form name="commander" id="commander" action="livrer.html" method="GET">
+                <fieldset>
+                    <legend>Information personnelle</legend>
+                    <label>Nom</label><input name="nom" id="nom" type="text">
+                    <label>Prénom</label><input name="prenom" id="prenom" type="text">
+                    <label>Numéro de Telephone</label><input name="telephone" id="telephone" type="text">
+                </fieldset>
+                <fieldset>
+                    <legend>Adresse</legend>
+                    <label>N°</label><input name="numero" id="numero" type="number">
+                    <label>Appelation</label><input name="appelation" id="appelation" type="text">
+                    <label>Code Postal</label><input name="code-postal" id="code-postal" type="number">
+                    <label>Ville</label><input name="ville" id="ville" type="text">
+                </fieldset>
+                <br>
+                <input name="inscription" id="inscription" type="submit" value="Valider">
+                <input name="reset" id="reset" type="reset" value="Réinitialiser">
+            </form>
+            <script type="text/javascript" src="recup1.js"></script>
+        </div>
     </body>
 </html>
