@@ -1,0 +1,46 @@
+html {
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+body {
+    min-height: 20em;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#valider{
+    background-color: rgb(234, 64, 30);
+    color: whitesmoke;
+    border-radius: 10%;
+}
+
+.validation{
+    background-color: goldenrod;
+    font-size: 20px;
+    color: rgb(234, 64, 30);
+    border: 0.2em solid black;
+    width: 20em;
+    height: 5em;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.dispo{
+    background-color: goldenrod;
+    font-size: 20px;
+    border: 0.2em solid black;
+    width: 20em;
+    height: 5em;
+}
