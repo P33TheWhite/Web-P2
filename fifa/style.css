@@ -13,6 +13,7 @@ body {
 }
 
 
+
 #valider{
     background-color: rgb(234, 64, 30);
     color: whitesmoke;
@@ -29,12 +30,13 @@ body {
 }
 
 
-.dispo{
+.disponible{
     background-color: goldenrod;
     font-size: 20px;
     border: 0.2em solid black;
     width: 20em;
     height: 5em;
+    text-align: center;
 }
 
 img {
