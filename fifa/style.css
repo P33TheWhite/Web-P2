@@ -37,6 +37,7 @@ body {
     width: 20em;
     height: 5em;
     text-align: center;
+    padding-bottom: 10px;
 }
 
 img {
@@ -52,4 +53,89 @@ img {
     flex-basis: 33.33%;
     max-width: 33.33%;
     box-sizing: border-box; 
+}
+
+.right .attaque img,
+.right .milieu img,
+.right .defense img,
+.right .gardien img {
+    width: 30px; /* Largeur réduite */
+    height: 30px; /* Hauteur réduite */
+}
+
+/* Positionnement des croix */
+
+.right .attaque .attaque1 img {
+    position: absolute;
+    top: 35%;
+    left: 74%;
+}
+
+.right .attaque .attaque2 img {
+    position: absolute;
+    top: 35%;
+    left: 81%;
+}
+
+.right .attaque .attaque3 img {
+    position: absolute;
+    top: 35%;
+    left: 88%;
+}
+
+.right .milieu .milieu1 img {
+    position: absolute;
+    top: 55%;
+    left: 74%;
+}
+
+.right .milieu .milieu2 img {
+    position: absolute;
+    top: 55%;
+    left: 81%;
+}
+
+.right .milieu .milieu3 img {
+    position: absolute;
+    top: 55%;
+    left: 88%;
+}
+
+.right .defense .defense1 img {
+    position: absolute;
+    top: 76%;
+    left: 72%;
+}
+
+.right .defense .defense2 img {
+    position: absolute;
+    top: 76%;
+    left: 78%;
+}
+
+.right .defense .defense3 img {
+    position: absolute;
+    top: 76%;
+    left: 84%;
+}
+
+.right .defense .defense4 img {
+    position: absolute;
+    top: 76%;
+    left: 90%;
+}
+
+.right .gardien img {
+    position: absolute;
+    top: 89%;
+    left: 81%;
+}
+
+
+#joueursDisponibles img {
+    width: 85px;
+    height: 100px;
+    margin-right: 10px;
+    margin-top: 5px;
+    overflow: scroll;
 }

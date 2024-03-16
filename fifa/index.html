@@ -4,17 +4,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script src="fifa.js"></script>
         <link rel="icon" type="image/png" sizes="32x32" href="images/ballon.png">
         <title>FIFA 2.0</title>
     </head>
     <body>
-        <h1>Ma composition</h1>
+        <h1>Ma composition des Girondins</h1>
         <div class="all">
             <div class="left">
                 <div class="disponible">
                     <p>Les joueurs disponibles</p>
-                    <input name="men" id="men" type="submit" value="men">
-                    <input name="women" id="women" type="submit" value="women">
+                    <input name="men" id="men" type="submit" value="men" onclick="afficherJoueursHommes()">
+                    <input name="women" id="women" type="submit" value="women" onclick="afficherJoueusesFemmes()">
+                    <div id="joueursDisponibles"></div>
                 </div>
             </div>
             <div class="center">
@@ -25,7 +27,46 @@
             </div>
             <div class="right">
                 <div class="terrain">
-                    <img src="images/terrainDeFoot.jpeg" />
+                    <img src="images/terrainDeFoot.jpeg" alt="terrain de foot" />
+                    <div class="attaque">
+                        <div class="attaque1">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                        <div class="attaque2">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                        <div class="attaque3">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                    </div>
+                    <div class="milieu">
+                        <div class="milieu1">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                        <div class="milieu2">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                        <div class="milieu3">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                    </div>
+                    <div class="defense">
+                        <div class="defense1">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                        <div class="defense2">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                        <div class="defense3">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                        <div class="defense4">
+                            <img src="images/cross.png" alt="croix" />
+                        </div>
+                    </div>
+                    <div class="gardien">
+                        <img src="images/cross.png" alt="croix" />
+                    </div>
                 </div>
             </div>
         </div>
