@@ -1,4 +1,10 @@
+let dejaVuHomme = false;
+let dejaVuFemme = false;
+
 function afficherJoueursHommes(){
+
+    document.getElementById('joueursDisponibles').innerHTML = '';
+
 
     var imagesHommes = [
         'images/joueur/hommes/badji.png',
@@ -23,26 +29,39 @@ function afficherJoueursHommes(){
         'images/joueur/hommes/weissbeck.png'
     ];
 
-    var conteneur = document.getElementById('joueursDisponibles');
+    if(!dejaVuHomme){
 
-    imagesHommes.forEach(function(url) {
-        var img = document.createElement('img');
-        img.src = url;
-        img.alt = 'Joueur de football';
-        conteneur.appendChild(img);
-    });
+        document.getElementById('joueursDisponibles').style.display = 'block';
+        document.getElementById('joueusesDisponibles').style.display = 'none';
+    
+        var conteneur = document.getElementById('joueursDisponibles');
+        joueursHommesDiv.innerHTML = '';
 
-    conteneur.style.paddingTop='10px';
-    conteneur.style.width = '408';
-    conteneur.style.height = '550px';
-    conteneur.style.backgroundColor = 'goldenrod';
-    conteneur.style.border = '0.2em solid black';
+    
+        imagesHommes.forEach(function(url) {
+            var img = document.createElement('img');
+            img.src = url;
+            img.alt = 'Joueur de football';
+            conteneur.appendChild(img);
+        });
+    
+        conteneur.style.paddingTop='10px';
+        conteneur.style.width = '408';
+        conteneur.style.height = '550px';
+        conteneur.style.backgroundColor = 'goldenrod';
+        conteneur.style.border = '0.2em solid black';
+
+        dejaVuHomme=true;
+        dejaVuFemme=false;
+    }
 
 }
 
 
 
 function afficherJoueusesFemmes(){
+
+    document.getElementById('joueusesDisponibles').innerHTML = '';
 
     var imagesFemmes = [
         'images/joueur/femmes/autin.png',
@@ -57,18 +76,28 @@ function afficherJoueusesFemmes(){
         'images/joueur/femmes/tarrieu.png'
     ];
 
-    var conteneur1 = document.getElementById('joueursDisponibles');
 
-    imagesFemmes.forEach(function(url) {
-        var img = document.createElement('img');
-        img.src = url;
-        img.alt = 'Joueuse de football';
-        conteneur1.appendChild(img);
-    });
+    if(!dejaVuFemme){
+        document.getElementById('joueusesDisponibles').style.display = 'block';
+        document.getElementById('joueursDisponibles').style.display = 'none';
+    
+        var conteneur1 = document.getElementById('joueusesDisponibles');
+    
+        imagesFemmes.forEach(function(url) {
+            var img = document.createElement('img');
+            img.src = url;
+            img.alt = 'Joueuse de football';
+            conteneur1.appendChild(img);
+        });
+    
+        conteneur1.style.paddingTop = '10px';
+        conteneur1.style.width = '408px';
+        conteneur1.style.height = '550px';
+        conteneur1.style.backgroundColor = 'goldenrod';
+        conteneur1.style.border = '0.2em solid black';
 
-    conteneur1.style.paddingTop = '10px';
-    conteneur1.style.width = '408px';
-    conteneur1.style.height = '550px';
-    conteneur1.style.backgroundColor = 'goldenrod';
-    conteneur1.style.border = '0.2em solid black';
+        dejaVuFemme=true;
+        dejaVuHomme=false;
+    }
+
 }
