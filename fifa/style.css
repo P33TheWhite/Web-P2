@@ -7,8 +7,8 @@ h1 {
 }
 
 body {
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 2vw;
+    margin-right: 2vw;
     min-height: 20em;
 }
 
@@ -25,8 +25,8 @@ body {
     font-size: 20px;
     color: rgb(234, 64, 30);
     border: 0.2em solid black;
-    width: 20em;
-    height: 5em;
+    width: 25vw;
+    height: 15vh;
 }
 
 
@@ -34,15 +34,13 @@ body {
     background-color: goldenrod;
     font-size: 20px;
     border: 0.2em solid black;
-    width: 20em;
-    height: 5em;
+    width: 25vw;
+    height: 15vh;
     text-align: center;
-    padding-bottom: 10px;
 }
 
 img {
-    width : 450px;
-    height : 600px;
+    width : 90%; /*à verif sur autre navigateur*/
     }
 .all{
     display: flex;
@@ -59,8 +57,8 @@ img {
 .right .milieu img,
 .right .defense img,
 .right .gardien img {
-    width: 30px; /* Largeur réduite */
-    height: 30px; /* Hauteur réduite */
+    width: 2vw; /* Largeur réduite */
+    height: 4vh; /* Hauteur réduite */
 }
 
 /* Positionnement des croix */
@@ -131,19 +129,24 @@ img {
     left: 81%;
 }
 
+#joueursDisponibles{
+    overflow-y: scroll;
+}
+
+#joueusesDisponibles{
+    overflow-y : scroll; 
+}
 
 #joueursDisponibles img {
-    width: 85px;
-    height: 100px;
-    margin-right: 10px;
-    margin-top: 5px;
-    overflow: scroll;
+    width: 5vw;
+    height: 15vh;
+    margin-right: 1vh;
+    margin-top: 2vh;
 }
 
 #joueusesDisponibles img {
-    width: 85px;
-    height: 100px;
-    margin-right: 10px;
-    margin-top: 5px;
-    overflow: scroll;
+    width: 5vw;
+    height: 15vh;
+    margin-right: 1vh;
+    margin-top: 2vh;
 }
