@@ -3,7 +3,7 @@ html {
 }
 
 h1 {
-    font-size: 6vh;
+    font-size: 3vw;
 }
 
 body {
@@ -32,15 +32,16 @@ body {
 
 .disponible{
     background-color: goldenrod;
-    font-size: 3vh;
-    border: 0.5vh solid black;
+    font-size: 1.4vw;
+    border: 0.2vw solid black;
     width: 25vw;
     height: 15vh;
     text-align: center;
 }
 
 img {
-    width : 30vw; /*à verif sur autre navigateur*/
+    width : 30vw;
+    height: 87vh; /*à verif sur autre navigateur*/
     }
 
 .all{
@@ -49,7 +50,6 @@ img {
 }
 
 .left, .center, .right {
-    flex-basis: 33.33vw;
     max-width: 33.33vw;
     box-sizing: border-box; 
 }
@@ -67,37 +67,37 @@ img {
 .right .attaque .attaque1 img {
     position: absolute;
     top: 37vh;
-    left: 72vw;
+    left: 73vw;
 }
 
 .right .attaque .attaque2 img {
     position: absolute;
     top: 37vh;
-    left: 80vw;
+    left: 81vw;
 }
 
 .right .attaque .attaque3 img {
     position: absolute;
     top: 37vh;
-    left: 88vw;
+    left: 89vw;
 }
 
 .right .milieu .milieu1 img {
     position: absolute;
     top: 57vh;
-    left: 72vw;
+    left: 73vw;
 }
 
 .right .milieu .milieu2 img {
     position: absolute;
     top: 57vh;
-    left: 80vw;
+    left: 81vw;
 }
 
 .right .milieu .milieu3 img {
     position: absolute;
     top: 57vh;
-    left: 88vw;
+    left: 89vw;
 }
 
 .right .defense .defense1 img {
@@ -115,19 +115,19 @@ img {
 .right .defense .defense3 img {
     position: absolute;
     top: 79vh;
-    left: 83vw;
+    left: 84vw;
 }
 
 .right .defense .defense4 img {
     position: absolute;
     top: 79vh;
-    left: 89vw;
+    left: 90vw;
 }
 
 .right .gardien img {
     position: absolute;
     top: 97vh;
-    left: 80vw;
+    left: 81vw;
 }
 
 #joueursDisponibles{
@@ -141,13 +141,13 @@ img {
 #joueursDisponibles img {
     width: 5vw;
     height: 15vh;
-    margin-right: 1vh;
+    margin-right: 0.5vw;
     margin-top: 2vh;
 }
 
 #joueusesDisponibles img {
     width: 5vw;
     height: 15vh;
-    margin-right: 1vh;
+    margin-right: 0.5vw;
     margin-top: 2vh;
 }
