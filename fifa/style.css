@@ -3,7 +3,7 @@ html {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 6vh;
 }
 
 body {
@@ -17,7 +17,7 @@ body {
 #valider{
     background-color: rgb(234, 64, 30);
     color: whitesmoke;
-    border-radius: 10%;
+    border-radius: 0,2em;
 }
 
 .validation{
@@ -32,24 +32,25 @@ body {
 
 .disponible{
     background-color: goldenrod;
-    font-size: 20px;
-    border: 0.2em solid black;
+    font-size: 3vh;
+    border: 0.5vh solid black;
     width: 25vw;
     height: 15vh;
     text-align: center;
 }
 
 img {
-    width : 90%; /*à verif sur autre navigateur*/
+    width : 30vw; /*à verif sur autre navigateur*/
     }
+
 .all{
     display: flex;
     justify-content: space-between;
 }
 
 .left, .center, .right {
-    flex-basis: 33.33%;
-    max-width: 33.33%;
+    flex-basis: 33.33vw;
+    max-width: 33.33vw;
     box-sizing: border-box; 
 }
 
@@ -65,68 +66,68 @@ img {
 
 .right .attaque .attaque1 img {
     position: absolute;
-    top: 35%;
-    left: 74%;
+    top: 37vh;
+    left: 72vw;
 }
 
 .right .attaque .attaque2 img {
     position: absolute;
-    top: 35%;
-    left: 81%;
+    top: 37vh;
+    left: 80vw;
 }
 
 .right .attaque .attaque3 img {
     position: absolute;
-    top: 35%;
-    left: 88%;
+    top: 37vh;
+    left: 88vw;
 }
 
 .right .milieu .milieu1 img {
     position: absolute;
-    top: 55%;
-    left: 74%;
+    top: 57vh;
+    left: 72vw;
 }
 
 .right .milieu .milieu2 img {
     position: absolute;
-    top: 55%;
-    left: 81%;
+    top: 57vh;
+    left: 80vw;
 }
 
 .right .milieu .milieu3 img {
     position: absolute;
-    top: 55%;
-    left: 88%;
+    top: 57vh;
+    left: 88vw;
 }
 
 .right .defense .defense1 img {
     position: absolute;
-    top: 76%;
-    left: 72%;
+    top: 79vh;
+    left: 72vw;
 }
 
 .right .defense .defense2 img {
     position: absolute;
-    top: 76%;
-    left: 78%;
+    top: 79vh;
+    left: 78vw;
 }
 
 .right .defense .defense3 img {
     position: absolute;
-    top: 76%;
-    left: 84%;
+    top: 79vh;
+    left: 83vw;
 }
 
 .right .defense .defense4 img {
     position: absolute;
-    top: 76%;
-    left: 90%;
+    top: 79vh;
+    left: 89vw;
 }
 
 .right .gardien img {
     position: absolute;
-    top: 89%;
-    left: 81%;
+    top: 97vh;
+    left: 80vw;
 }
 
 #joueursDisponibles{

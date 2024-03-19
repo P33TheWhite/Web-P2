@@ -42,12 +42,14 @@ function afficherJoueursHommes(){
             img.alt = 'Joueur de football';
             conteneur.appendChild(img);
         });
-    
-        conteneur.style.paddingTop='10px';
-        conteneur.style.width = '408';
-        conteneur.style.height = '550px';
+
+        conteneur.style.marginTop='1vh';
+        conteneur.style.paddingTop='1vh';
+        conteneur.style.paddingBottom='1vh';
+        conteneur.style.width = '25vw';
+        conteneur.style.height = '72vh';
         conteneur.style.backgroundColor = 'goldenrod';
-        conteneur.style.border = '0.2em solid black';
+        conteneur.style.border = '0.5vh solid black';
 
         dejaVuHomme=true;
         dejaVuFemme=false;
@@ -88,11 +90,13 @@ function afficherJoueusesFemmes(){
             conteneur1.appendChild(img);
         });
     
-        conteneur1.style.paddingTop = '10px';
-        conteneur1.style.width = '408px';
-        conteneur1.style.height = '550px';
+        conteneur1.style.marginTop='1vh';
+        conteneur1.style.paddingTop='1vh';
+        conteneur1.style.paddingBottom='1vh';
+        conteneur1.style.width = '25vw';
+        conteneur1.style.height = '54vh';
         conteneur1.style.backgroundColor = 'goldenrod';
-        conteneur1.style.border = '0.2em solid black';
+        conteneur1.style.border = '0.5vh solid black';
 
         dejaVuFemme=true;
         dejaVuHomme=false;
