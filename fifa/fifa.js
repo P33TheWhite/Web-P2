@@ -35,8 +35,6 @@ function afficherJoueursHommes(){
         document.getElementById('joueusesDisponibles').style.display = 'none';
     
         var conteneur = document.getElementById('joueursDisponibles');
-        joueursHommesDiv.innerHTML = '';
-
     
         imagesHommes.forEach(function(url) {
             var img = document.createElement('img');
