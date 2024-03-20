@@ -1,5 +1,6 @@
 let dejaVuHomme = false;
 let dejaVuFemme = false;
+let firstParent = null;
 
 function afficherJoueursHommes(){
 
@@ -39,7 +40,11 @@ function afficherJoueursHommes(){
         imagesHommes.forEach(function(url) {
             var img = document.createElement('img');
             img.src = url;
-            img.alt = 'Joueur de football';
+            img.alt = url;
+            img.draggable = true;
+            img.ondragstart = function(event) {
+                drag(event);
+                };
             conteneur.appendChild(img);
         });
 
@@ -86,7 +91,11 @@ function afficherJoueusesFemmes(){
         imagesFemmes.forEach(function(url) {
             var img = document.createElement('img');
             img.src = url;
-            img.alt = 'Joueuse de football';
+            img.alt = url;
+            img.draggable = true;
+            img.ondragstart = function(event) {
+                drag(event);
+                };
             conteneur1.appendChild(img);
         });
     
@@ -102,4 +111,27 @@ function afficherJoueusesFemmes(){
         dejaVuHomme=false;
     }
 
+}
+
+
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drag(event) {
+    // Sauvegarde de l'élément parent initial
+    firstParent = event.target.parentNode;
+    event.dataTransfer.setData("text", event.target.alt);
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    var img = document.createElement("img");
+    img.src = data; // Utilisez l'information transmise pour déterminer l'URL de l'image
+    img.alt = data;
+    img.dataset.alt = 'deplacer';
+    event.target.appendChild(img);
+    firstParent.removeChild(document.querySelector('img[alt="' + data + '"]'));
 }

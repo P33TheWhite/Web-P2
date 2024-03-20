@@ -143,6 +143,7 @@ img {
     height: 15vh;
     margin-right: 0.5vw;
     margin-top: 2vh;
+    cursor: pointer;
 }
 
 #joueusesDisponibles img {
@@ -150,4 +151,13 @@ img {
     height: 15vh;
     margin-right: 0.5vw;
     margin-top: 2vh;
+    cursor: pointer;
+}
+
+
+img[data-alt="deplacer"] {
+    border: 2px solid red; 
+    z-index: 9999; /* Met en premier plan */
+    width: 5vw;
+    height: 15vh;
 }
