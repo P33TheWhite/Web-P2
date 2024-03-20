@@ -54,10 +54,7 @@ img {
     box-sizing: border-box; 
 }
 
-.right .attaque img,
-.right .milieu img,
-.right .defense img,
-.right .gardien img {
+#croix{
     width: 2vw; /* Largeur réduite */
     height: 4vh; /* Hauteur réduite */
 }
@@ -156,8 +153,8 @@ img {
 
 
 img[data-alt="deplacer"] {
-    border: 2px solid red; 
     z-index: 9999; /* Met en premier plan */
     width: 5vw;
     height: 15vh;
 }
+

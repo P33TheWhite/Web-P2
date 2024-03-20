@@ -114,7 +114,6 @@ function afficherJoueusesFemmes(){
 }
 
 
-
 function allowDrop(event) {
     event.preventDefault();
 }
@@ -132,6 +131,6 @@ function drop(event) {
     img.src = data; // Utilisez l'information transmise pour déterminer l'URL de l'image
     img.alt = data;
     img.dataset.alt = 'deplacer';
-    event.target.appendChild(img);
+    event.target.parentNode.appendChild(img);
     firstParent.removeChild(document.querySelector('img[alt="' + data + '"]'));
 }
