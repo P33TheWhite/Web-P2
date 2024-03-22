@@ -2,11 +2,21 @@ let dejaVuHomme = false;
 let dejaVuFemme = false;
 let firstParent = null;
 
-function afficherJoueursHommes(){
+function reinitialiserEquipe() {
+    // Supprimer toutes les images avec data-alt="deplacer"
+    var imagesDeplacer = document.querySelectorAll('img[data-alt="deplacer"]');
+    imagesDeplacer.forEach(function(image) {
+        image.parentNode.removeChild(image);
+    });
+    dejaVuHomme = false;
+    dejaVuFemme = false;
 
-    document.getElementById('joueursDisponibles').innerHTML = '';
+    // Réafficher les joueurs disponibles
+    afficherJoueursHommes();
+    afficherJoueusesFemmes();
+}
 
-
+function afficherJoueursHommes() {
     var imagesHommes = [
         'images/joueur/hommes/badji.png',
         'images/joueur/hommes/barbet.png',
@@ -30,44 +40,27 @@ function afficherJoueursHommes(){
         'images/joueur/hommes/weissbeck.png'
     ];
 
-    if(!dejaVuHomme){
-
-        document.getElementById('joueursDisponibles').style.display = 'block';
-        document.getElementById('joueusesDisponibles').style.display = 'none';
-    
+    if (!dejaVuHomme) {
         var conteneur = document.getElementById('joueursDisponibles');
-    
+        conteneur.innerHTML = '';
+
+        conteneur.style.display = 'block';
+        document.getElementById('joueusesDisponibles').style.display = 'none';
+
         imagesHommes.forEach(function(url) {
-            var img = document.createElement('img');
-            img.src = url;
-            img.alt = url;
-            img.draggable = true;
-            img.ondragstart = function(event) {
-                drag(event);
-                };
-            conteneur.appendChild(img);
+            if (!document.querySelector('img[src="' + url + '"]')) {
+                var img = createDraggableImage(url);
+                conteneur.appendChild(img);
+            }
         });
 
-        conteneur.style.marginTop='1vh';
-        conteneur.style.paddingTop='1vh';
-        conteneur.style.paddingBottom='1vh';
-        conteneur.style.width = '25vw';
-        conteneur.style.height = '72vh';
-        conteneur.style.backgroundColor = 'goldenrod';
-        conteneur.style.border = '0.5vh solid black';
-
-        dejaVuHomme=true;
-        dejaVuFemme=false;
+        styleContainer(conteneur, '25vw', '72vh');
+        dejaVuHomme = true;
+        dejaVuFemme = false;
     }
-
 }
 
-
-
-function afficherJoueusesFemmes(){
-
-    document.getElementById('joueusesDisponibles').innerHTML = '';
-
+function afficherJoueusesFemmes() {
     var imagesFemmes = [
         'images/joueur/femmes/autin.png',
         'images/joueur/femmes/dehri.png',
@@ -81,38 +74,46 @@ function afficherJoueusesFemmes(){
         'images/joueur/femmes/tarrieu.png'
     ];
 
+    if (!dejaVuFemme) {
+        var conteneur = document.getElementById('joueusesDisponibles');
+        conteneur.innerHTML = '';
 
-    if(!dejaVuFemme){
-        document.getElementById('joueusesDisponibles').style.display = 'block';
+        conteneur.style.display = 'block';
         document.getElementById('joueursDisponibles').style.display = 'none';
-    
-        var conteneur1 = document.getElementById('joueusesDisponibles');
-    
+
         imagesFemmes.forEach(function(url) {
-            var img = document.createElement('img');
-            img.src = url;
-            img.alt = url;
-            img.draggable = true;
-            img.ondragstart = function(event) {
-                drag(event);
-                };
-            conteneur1.appendChild(img);
+            if (!document.querySelector('img[src="' + url + '"]')) {
+                var img = createDraggableImage(url);
+                conteneur.appendChild(img);
+            }
         });
-    
-        conteneur1.style.marginTop='1vh';
-        conteneur1.style.paddingTop='1vh';
-        conteneur1.style.paddingBottom='1vh';
-        conteneur1.style.width = '25vw';
-        conteneur1.style.height = '54vh';
-        conteneur1.style.backgroundColor = 'goldenrod';
-        conteneur1.style.border = '0.5vh solid black';
 
-        dejaVuFemme=true;
-        dejaVuHomme=false;
+        styleContainer(conteneur, '25vw', '54vh');
+        dejaVuFemme = true;
+        dejaVuHomme = false;
     }
-
 }
 
+function createDraggableImage(url) {
+    var img = document.createElement('img');
+    img.src = url;
+    img.alt = url;
+    img.draggable = true;
+    img.ondragstart = function(event) {
+        drag(event);
+    };
+    return img;
+}
+
+function styleContainer(container, width, height) {
+    container.style.marginTop = '1vh';
+    container.style.paddingTop = '1vh';
+    container.style.paddingBottom = '1vh';
+    container.style.width = width;
+    container.style.height = height;
+    container.style.backgroundColor = 'goldenrod';
+    container.style.border = '0.5vh solid black';
+}
 
 function allowDrop(event) {
     event.preventDefault();
@@ -130,7 +131,40 @@ function drop(event) {
     var img = document.createElement("img");
     img.src = data; // Utilisez l'information transmise pour déterminer l'URL de l'image
     img.alt = data;
-    img.dataset.alt = 'deplacer';
+    
+    // Ajouter l'attribut data-alt uniquement si l'image est déplacée
+    if (event.target.parentNode.className !== 'attaque' &&
+        event.target.parentNode.className !== 'milieu' &&
+        event.target.parentNode.className !== 'defense' &&
+        event.target.parentNode.className !== 'gardien') {
+        img.dataset.alt = 'deplacer';
+    }
+    
     event.target.parentNode.appendChild(img);
-    firstParent.removeChild(document.querySelector('img[alt="' + data + '"]'));
+    
+    // Vérifier si l'image d'origine existe encore dans firstParent avant de la supprimer
+    if (firstParent.contains(document.querySelector('img[alt="' + data + '"]'))) {
+        firstParent.removeChild(document.querySelector('img[alt="' + data + '"]'));
+    }
+
+}
+
+function compteur() {
+    let joueurs = document.querySelectorAll('img[data-alt="deplacer"]');
+    console.log(joueurs.length)
+    let restant = 11 - joueurs.length;
+    return restant;
+}
+
+function valider() {
+    joueurRestant = compteur();
+    if (joueurRestant == 0) {
+        alert("Bravo");
+    } else {
+        if (joueurRestant == 1) {
+            alert("Il vous reste joueur " + joueurRestant + " à placer");
+        } else {
+            alert("Il vous reste joueurs " + joueurRestant + " à placer");
+        }
+    }
 }

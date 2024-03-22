@@ -14,7 +14,7 @@ body {
 
 
 
-#valider{
+#valider, #reinitialiser{
     background-color: rgb(234, 64, 30);
     color: whitesmoke;
     border-radius: 0,2em;

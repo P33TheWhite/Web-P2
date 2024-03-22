@@ -23,7 +23,8 @@
             <div class="center">
                 <div class="validation">
                     <p>Valider la sélection</p>
-                    <input name="valider" id="valider" type="submit" value="Valider">
+                    <input name="valider" id="valider" type="submit" value="Valider" onclick="valider()">
+                    <input name="reinitialiser" id="reinitialiser" type="submit" value="Réinitialiser" onclick="reinitialiserEquipe()">
                 </div>
             </div>
             <div class="right">
@@ -40,8 +41,8 @@
                             <img src="images/cross.png" id="croix" alt="croix" />
                         </div>
                     </div>
-                    <div class="milieu" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <div class="milieu1">
+                    <div class="milieu">
+                        <div class="milieu1" ondrop="drop(event)" ondragover="allowDrop(event)">
                             <img src="images/cross.png" id="croix" alt="croix" />
                         </div>
                         <div class="milieu2" ondrop="drop(event)" ondragover="allowDrop(event)">
