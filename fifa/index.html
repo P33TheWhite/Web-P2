@@ -29,7 +29,7 @@
             </div>
             <div class="right">
                 <div class="terrain">
-                    <img src="images/terrainDeFoot.jpeg" alt="terrain de foot" />
+                    <img src="images/terrainDeFoot.jpeg" alt="terrain de foot" ondragstart="return false;">
                     <div class="attaque">
                         <div class="attaque1" ondrop="drop(event)" ondragover="allowDrop(event)">
                             <img src="images/cross.png" id="croix" alt="croix" />
@@ -52,8 +52,8 @@
                             <img src="images/cross.png" id="croix" alt="croix" />
                         </div>
                     </div>
-                    <div class="defense" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <div class="defense1">
+                    <div class="defense">
+                        <div class="defense1" ondrop="drop(event)" ondragover="allowDrop(event)">
                             <img src="images/cross.png" id="croix" alt="croix" />
                         </div>
                         <div class="defense2" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -66,8 +66,10 @@
                             <img src="images/cross.png" id="croix" alt="croix" />
                         </div>
                     </div>
-                    <div class="gardien" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <img src="images/cross.png" id="croix" alt="croix" />
+                    <div class="gardien">
+                        <div class="gardien1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <img src="images/cross.png" id="croix" alt="croix" />
+                        </div>
                     </div>
                 </div>
             </div>

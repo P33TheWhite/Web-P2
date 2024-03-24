@@ -119,11 +119,14 @@ function allowDrop(event) {
     event.preventDefault();
 }
 
+
 function drag(event) {
     // Sauvegarde de l'élément parent initial
     firstParent = event.target.parentNode;
+
     event.dataTransfer.setData("text", event.target.alt);
 }
+
 
 function drop(event) {
     event.preventDefault();
@@ -151,7 +154,6 @@ function drop(event) {
 
 function compteur() {
     let joueurs = document.querySelectorAll('img[data-alt="deplacer"]');
-    console.log(joueurs.length)
     let restant = 11 - joueurs.length;
     return restant;
 }
@@ -159,12 +161,24 @@ function compteur() {
 function valider() {
     joueurRestant = compteur();
     if (joueurRestant == 0) {
-        alert("Bravo");
+        redirectToFinalTeamPage();
     } else {
-        if (joueurRestant == 1) {
-            alert("Il vous reste joueur " + joueurRestant + " à placer");
-        } else {
-            alert("Il vous reste joueurs " + joueurRestant + " à placer");
-        }
+        alert("Il faut placer 11 joueurs");
     }
+}
+
+function redirectToFinalTeamPage() {
+    // Récupérer les joueurs sélectionnés
+    var joueursSelectionnes = [];
+    var imagesDeplacer = document.querySelectorAll('img[data-alt="deplacer"]');
+    imagesDeplacer.forEach(function(image) {
+        joueursSelectionnes.push(image.src);
+    });
+
+    // Construire l'URL de la page finale avec les données des joueurs
+    var finalTeamPageURL = "fin.html";
+    finalTeamPageURL += "?joueurs=" + encodeURIComponent(JSON.stringify(joueursSelectionnes));
+    
+    // Redirection vers la page de l'équipe finale avec les données des joueurs dans les paramètres de l'URL
+    window.location.href = finalTeamPageURL;
 }

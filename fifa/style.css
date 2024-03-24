@@ -14,7 +14,7 @@ body {
 
 
 
-#valider, #reinitialiser{
+#valider, #reinitialiser, .men, .women{
     background-color: rgb(234, 64, 30);
     color: whitesmoke;
     border-radius: 0,2em;
@@ -32,11 +32,11 @@ body {
 
 .disponible{
     background-color: goldenrod;
-    font-size: 1.4vw;
-    border: 0.2vw solid black;
+    font-size: 1.5vw;
+    color: rgb(234, 64, 30);
+    border: 0.2em solid black;
     width: 25vw;
     height: 15vh;
-    text-align: center;
 }
 
 img {
@@ -153,6 +153,8 @@ img {
 
 
 img[data-alt="deplacer"] {
+    position: absolute;
+    transform: translate(-50%, -50%);
     z-index: 9999; /* Met en premier plan */
     width: 5vw;
     height: 15vh;
