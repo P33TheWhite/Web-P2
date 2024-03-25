@@ -1,24 +1,14 @@
-function afficherContenuRight() {
-    // Récupérer toutes les div avec la classe "right"
-    var divsRight = document.querySelectorAll('.right');
-    
-    // Créer un fragment de document pour y ajouter les contenus
-    var fragment = document.createDocumentFragment();
+function truc(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const content = decodeURIComponent(urlParams.get('content'));
 
-    // Parcourir toutes les divs avec la classe "right"
-    divsRight.forEach(function(divRight) {
-        // Cloner la div
-        var clone = divRight.cloneNode(true);
-        // Ajouter le clone au fragment de document
-        fragment.appendChild(clone);
-    });
-
-    // Sélectionner le conteneur où afficher les divs sur la page finale (fin.html)
-    var conteneurFinale = document.body; // Ou sélectionnez un autre conteneur selon votre structure HTML
-
-    // Ajouter le fragment contenant les divs au conteneur sur la page finale
-    conteneurFinale.appendChild(fragment);
+    // Mettez à jour le contenu de l'élément avec la classe 'right' une fois que le DOM est entièrement chargé
+    const rightElement = document.querySelector('.right');
+    if (rightElement) {
+        rightElement.innerHTML = content;
+    } else {
+        console.error("L'élément avec la classe 'right' n'a pas été trouvé.");
+    }
 }
 
-// Appeler la fonction pour afficher les divs sur la page finale
-afficherContenuRight();
+window.onload=truc;

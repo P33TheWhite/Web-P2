@@ -182,26 +182,18 @@ function compteur() {
     return restant;
 }
 
-// Valider l'équipe
-function valider() {
-    joueurRestant = compteur();
-    if (joueurRestant == 0) {
-        redirectToFinalTeamPage();
-    } else {
-        var form = document.getElementById('myForm');
 
-        // Récupérer tous les joueurs avec la classe "deplacer"
-        var joueurs = document.querySelectorAll('.deplacer');
-    
-        // Parcourir les joueurs et ajouter leurs données au formulaire
-        joueurs.forEach(function(joueur, index) {
-            var hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'joueur' + index; // Utilisez un nom unique pour chaque joueur
-            hiddenInput.value = joueur.src; // Utilisez une valeur appropriée, par exemple, l'URL de l'image
-            form.appendChild(hiddenInput); // Ajouter le champ de formulaire caché au formulaire
-        });
+//valider equipe
+function valider() {
+    var joueurRestant = compteur();
+    if (joueurRestant == 0) {
+        var result = document.querySelector('.right').innerHTML;
+        var encoded = encodeURIComponent(result);
+        var destinationUrl = 'fin.html?content=' + encoded;
+        // Rediriger vers l'URL construite
+        window.location.href = destinationUrl;
+    } else {
+        alert("Il faut placer 11 joueurs");
     }
 }
-
-window.onload=reactiverAttributs;
+window.onload = reactiverAttributs;

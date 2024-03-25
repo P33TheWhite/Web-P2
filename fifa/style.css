@@ -20,17 +20,7 @@ body {
     border-radius: 0,2em;
 }
 
-.validation{
-    background-color: goldenrod;
-    font-size: 1.5vw;
-    color: rgb(234, 64, 30);
-    border: 0.2em solid black;
-    width: 25vw;
-    height: 15vh;
-}
-
-
-.disponible{
+.validation, .disponible, .box{
     background-color: goldenrod;
     font-size: 1.5vw;
     color: rgb(234, 64, 30);
@@ -160,3 +150,10 @@ img[data-alt="deplacer"] {
     height: 15vh;
 }
 
+.meme {
+    margin-top: 5vh;
+    width: 30vw;
+    height: auto;
+    border-radius: 0,2em;
+
+}

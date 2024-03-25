@@ -10,7 +10,6 @@
     </head>
     <body>
         <h1>Ma composition des Girondins</h1>
-        <form id="myform" action="fin.html" method="GET">
         <div class="all">
             <div class="left">
                 <div class="disponible">
@@ -18,8 +17,8 @@
                     <input name="men" class="men" type="submit" value="men" onclick="afficherJoueursHommes()">
                     <input name="women" class="women" type="submit" value="women" onclick="afficherJoueusesFemmes()">
                 </div>
-                <div id="joueursDisponibles" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div id="joueusesDisponibles" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div id="joueursDisponibles"></div>
+                <div id="joueusesDisponibles"></div>
             </div>
             <div class="center">
                 <div class="validation">
@@ -75,6 +74,5 @@
                 </div>
             </div>
         </div>
-        </form>
     </body>
 </html>
