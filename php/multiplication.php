@@ -46,6 +46,7 @@ function revision1($table) {
         echo "<form method='post'>";
         echo "<input type='number' name='reponse'>";
         echo "<input type='submit' value='Valider'>";
+        
         echo "</form>";
         
         if(isset($_POST['reponse'])) {

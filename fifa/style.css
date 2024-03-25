@@ -14,7 +14,7 @@ body {
 
 
 
-#valider, #reinitialiser, .men, .women{
+#valider, #reinitialiser, .men, .women, #reset{
     background-color: rgb(234, 64, 30);
     color: whitesmoke;
     border-radius: 0,2em;
@@ -152,8 +152,6 @@ img[data-alt="deplacer"] {
 
 .meme {
     margin-top: 5vh;
-    width: 30vw;
+    width: 25vw;
     height: auto;
-    border-radius: 0,2em;
-
 }

@@ -153,20 +153,44 @@ function drop(event) {
     var img = document.createElement("img");
     img.src = data;
     img.alt = data;
+
+    // Si l'image est déplacée
+    console.log(img.dataset)
+    if (img.dataset.alt == "deplacer") {
+        console.log("1")
+        // Ajouter l'image à l'emplacement actuel
+        // Réactiver les événements ondragover et ondrop pour l'emplacement initial (si elle est différente de la zone1)
+        firstParent.setAttribute('ondragover', 'allowDrop(event)');
+        firstParent.setAttribute('ondrop', 'drop(event)');
     
-    // Ajouter l'attribut data-alt uniquement si l'image est déplacée
-    if (event.target.parentNode.className !== 'attaque' &&
-        event.target.parentNode.className !== 'milieu' &&
-        event.target.parentNode.className !== 'defense' &&
-        event.target.parentNode.className !== 'gardien') {
-        img.dataset.alt = 'deplacer';
-    }
-    
-    event.target.parentNode.appendChild(img);
-    
-    // Vérifier si l'image d'origine existe encore dans firstParent avant de la supprimer
-    if (firstParent.contains(document.querySelector('img[alt="' + data + '"]'))) {
+
+        // Supprimer l'image de son emplacement initial
         firstParent.removeChild(document.querySelector('img[alt="' + data + '"]'));
+
+        event.target.parentNode.appendChild(img);
+
+    } else {
+        // Ajouter l'attribut data-alt uniquement si l'image est déplacée
+        if (event.target.parentNode.className !== 'attaque' &&
+            event.target.parentNode.className !== 'milieu' &&
+            event.target.parentNode.className !== 'defense' &&
+            event.target.parentNode.className !== 'gardien') {
+            img.dataset.alt = 'deplacer';
+        }
+
+        // Ajouter l'image à l'emplacement actuel
+        event.target.parentNode.appendChild(img);
+
+        // Vérifier si l'image d'origine existe encore dans firstParent avant de la supprimer
+        if (firstParent.contains(document.querySelector('img[alt="' + data + '"]'))) {
+            firstParent.removeChild(document.querySelector('img[alt="' + data + '"]'));
+        }
+
+        // Réactiver les événements ondragover et ondrop pour l'emplacement initial
+        if (firstParent.className.startsWith('zone')) {
+            firstParent.setAttribute('ondragover', 'allowDrop(event)');
+            firstParent.setAttribute('ondrop', 'drop(event)');
+        }
     }
 
     if (event.target.parentNode.className.startsWith('zone') && event.target.parentNode.className !== firstParent.className) {
@@ -174,6 +198,7 @@ function drop(event) {
         event.target.parentNode.removeAttribute('ondragover');
     }
 }
+
 
 // Compteur de joueurs restants
 function compteur() {
