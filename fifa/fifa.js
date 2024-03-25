@@ -11,11 +11,14 @@ function reinitialiserEquipe() {
     dejaVuHomme = false;
     dejaVuFemme = false;
 
+    reactiverAttributs(); // Réactiver les attributs ondragover et ondrop pour les zones
+
     // Réafficher les joueurs disponibles
     afficherJoueursHommes();
     afficherJoueusesFemmes();
 }
 
+// Afficher les joueurs disponibles pour les hommes
 function afficherJoueursHommes() {
     var imagesHommes = [
         'images/joueur/hommes/badji.png',
@@ -37,8 +40,7 @@ function afficherJoueursHommes() {
         'images/joueur/hommes/pitu.png',
         'images/joueur/hommes/sissokho.png',
         'images/joueur/hommes/straczek.png',
-        'images/joueur/hommes/weissbeck.png'
-    ];
+        'images/joueur/hommes/weissbeck.png'    ];
 
     if (!dejaVuHomme) {
         var conteneur = document.getElementById('joueursDisponibles');
@@ -60,6 +62,7 @@ function afficherJoueursHommes() {
     }
 }
 
+// Afficher les joueuses disponibles pour les femmes
 function afficherJoueusesFemmes() {
     var imagesFemmes = [
         'images/joueur/femmes/autin.png',
@@ -71,8 +74,7 @@ function afficherJoueusesFemmes() {
         'images/joueur/femmes/lerond.png',
         'images/joueur/femmes/liaigre.png',
         'images/joueur/femmes/seguin.png',
-        'images/joueur/femmes/tarrieu.png'
-    ];
+        'images/joueur/femmes/tarrieu.png'    ];
 
     if (!dejaVuFemme) {
         var conteneur = document.getElementById('joueusesDisponibles');
@@ -94,6 +96,7 @@ function afficherJoueusesFemmes() {
     }
 }
 
+// Créer une image draggable
 function createDraggableImage(url) {
     var img = document.createElement('img');
     img.src = url;
@@ -105,6 +108,21 @@ function createDraggableImage(url) {
     return img;
 }
 
+// Réactiver les attributs ondragover et ondrop pour les zones
+function reactiverAttributs() {
+    // Sélectionner toutes les div avec une classe commençant par 'zone'
+    let zones = document.querySelectorAll('[class^="zone"]');
+    
+    // Parcourir chaque élément zone
+    zones.forEach(function(zone) {
+        // Ajouter les attributs ondragover et ondrop
+        zone.setAttribute('ondragover', 'allowDrop(event)');
+        zone.setAttribute('ondrop', 'drop(event)');
+    });
+}
+
+
+// Styliser un conteneur
 function styleContainer(container, width, height) {
     container.style.marginTop = '1vh';
     container.style.paddingTop = '1vh';
@@ -115,11 +133,12 @@ function styleContainer(container, width, height) {
     container.style.border = '0.5vh solid black';
 }
 
+// Permettre le drop
 function allowDrop(event) {
     event.preventDefault();
 }
 
-
+// Drag
 function drag(event) {
     // Sauvegarde de l'élément parent initial
     firstParent = event.target.parentNode;
@@ -127,12 +146,12 @@ function drag(event) {
     event.dataTransfer.setData("text", event.target.alt);
 }
 
-
+// Drop
 function drop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
     var img = document.createElement("img");
-    img.src = data; // Utilisez l'information transmise pour déterminer l'URL de l'image
+    img.src = data;
     img.alt = data;
     
     // Ajouter l'attribut data-alt uniquement si l'image est déplacée
@@ -150,35 +169,39 @@ function drop(event) {
         firstParent.removeChild(document.querySelector('img[alt="' + data + '"]'));
     }
 
+    if (event.target.parentNode.className.startsWith('zone') && event.target.parentNode.className !== firstParent.className) {
+        event.target.parentNode.removeAttribute('ondrop');
+        event.target.parentNode.removeAttribute('ondragover');
+    }
 }
 
+// Compteur de joueurs restants
 function compteur() {
     let joueurs = document.querySelectorAll('img[data-alt="deplacer"]');
     let restant = 11 - joueurs.length;
     return restant;
 }
 
+// Valider l'équipe
 function valider() {
     joueurRestant = compteur();
     if (joueurRestant == 0) {
         redirectToFinalTeamPage();
     } else {
-        alert("Il faut placer 11 joueurs");
+        var form = document.getElementById('myForm');
+
+        // Récupérer tous les joueurs avec la classe "deplacer"
+        var joueurs = document.querySelectorAll('.deplacer');
+    
+        // Parcourir les joueurs et ajouter leurs données au formulaire
+        joueurs.forEach(function(joueur, index) {
+            var hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'joueur' + index; // Utilisez un nom unique pour chaque joueur
+            hiddenInput.value = joueur.src; // Utilisez une valeur appropriée, par exemple, l'URL de l'image
+            form.appendChild(hiddenInput); // Ajouter le champ de formulaire caché au formulaire
+        });
     }
 }
 
-function redirectToFinalTeamPage() {
-    // Récupérer les joueurs sélectionnés
-    var joueursSelectionnes = [];
-    var imagesDeplacer = document.querySelectorAll('img[data-alt="deplacer"]');
-    imagesDeplacer.forEach(function(image) {
-        joueursSelectionnes.push(image.src);
-    });
-
-    // Construire l'URL de la page finale avec les données des joueurs
-    var finalTeamPageURL = "fin.html";
-    finalTeamPageURL += "?joueurs=" + encodeURIComponent(JSON.stringify(joueursSelectionnes));
-    
-    // Redirection vers la page de l'équipe finale avec les données des joueurs dans les paramètres de l'URL
-    window.location.href = finalTeamPageURL;
-}
+window.onload=reactiverAttributs;

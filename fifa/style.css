@@ -61,67 +61,67 @@ img {
 
 /* Positionnement des croix */
 
-.right .attaque .attaque1 img {
+.right .attaque .zone1 img {
     position: absolute;
     top: 37vh;
     left: 73vw;
 }
 
-.right .attaque .attaque2 img {
+.right .attaque .zone2 img {
     position: absolute;
     top: 37vh;
     left: 81vw;
 }
 
-.right .attaque .attaque3 img {
+.right .attaque .zone3 img {
     position: absolute;
     top: 37vh;
     left: 89vw;
 }
 
-.right .milieu .milieu1 img {
+.right .milieu .zone4 img {
     position: absolute;
     top: 57vh;
     left: 73vw;
 }
 
-.right .milieu .milieu2 img {
+.right .milieu .zone5 img {
     position: absolute;
     top: 57vh;
     left: 81vw;
 }
 
-.right .milieu .milieu3 img {
+.right .milieu .zone6 img {
     position: absolute;
     top: 57vh;
     left: 89vw;
 }
 
-.right .defense .defense1 img {
+.right .defense .zone7 img {
     position: absolute;
     top: 79vh;
     left: 72vw;
 }
 
-.right .defense .defense2 img {
+.right .defense .zone8 img {
     position: absolute;
     top: 79vh;
     left: 78vw;
 }
 
-.right .defense .defense3 img {
+.right .defense .zone9 img {
     position: absolute;
     top: 79vh;
     left: 84vw;
 }
 
-.right .defense .defense4 img {
+.right .defense .zone10 img {
     position: absolute;
     top: 79vh;
     left: 90vw;
 }
 
-.right .gardien img {
+.right .gardien .zone11 img {
     position: absolute;
     top: 97vh;
     left: 81vw;
