@@ -155,3 +155,9 @@ img[data-alt="deplacer"] {
     width: 25vw;
     height: auto;
 }
+
+.poubelle{
+    margin-top: 5vh;
+    width: 5vw;
+    height: auto;
+}

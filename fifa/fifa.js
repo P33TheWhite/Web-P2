@@ -1,101 +1,106 @@
-
+// Variables pour contrôler l'affichage des joueurs
 let dejaVuHomme = false;
 let dejaVuFemme = false;
 let firstParent = null;
 
+// Tableaux contenant les URLs des images des joueurs
+var imagesFemmes = [
+    'images/joueur/femmes/autin.png',
+    'images/joueur/femmes/dehri.png',
+    'images/joueur/femmes/diaz.png',
+    'images/joueur/femmes/haelewyn.png',
+    'images/joueur/femmes/herbert.png',
+    'images/joueur/femmes/lardez.png',
+    'images/joueur/femmes/lerond.png',
+    'images/joueur/femmes/liaigre.png',
+    'images/joueur/femmes/seguin.png',
+    'images/joueur/femmes/tarrieu.png'
+];
+var imagesHommes = [
+    'images/joueur/hommes/badji.png',
+    'images/joueur/hommes/barbet.png',
+    'images/joueur/hommes/bokele.png',
+    'images/joueur/hommes/cassubie.png',
+    'images/joueur/hommes/delima.png',
+    'images/joueur/hommes/depussay.png',
+    'images/joueur/hommes/diaz.png',
+    'images/joueur/hommes/ekomié.png',
+    'images/joueur/hommes/elis.png',
+    'images/joueur/hommes/gregersen.png',
+    'images/joueur/hommes/ignatenko.png',
+    'images/joueur/hommes/livolant.png',
+    'images/joueur/hommes/louis-jean.png',
+    'images/joueur/hommes/marcelin.png',
+    'images/joueur/hommes/michelin.png',
+    'images/joueur/hommes/nsimba.png',
+    'images/joueur/hommes/pitu.png',
+    'images/joueur/hommes/sissokho.png',
+    'images/joueur/hommes/straczek.png',
+    'images/joueur/hommes/weissbeck.png'
+];
+
+// Fonction pour réinitialiser l'équipe
 function reinitialiserEquipe() {
-    // Supprimer toutes les images avec data-alt="deplacer"
+    // Supprimer toutes les images avec l'attribut data-alt="deplacer"
     var imagesDeplacer = document.querySelectorAll('img[data-alt="deplacer"]');
     imagesDeplacer.forEach(function(image) {
         image.parentNode.removeChild(image);
     });
+    // Réinitialiser les variables de contrôle
     dejaVuHomme = false;
     dejaVuFemme = false;
-
-    reactiverAttributs(); // Réactiver les attributs ondragover et ondrop pour les zones
-
+    // Réactiver les attributs ondragover et ondrop pour les zones
+    reactiverAttributs();
     // Réafficher les joueurs disponibles
     afficherJoueursHommes();
     afficherJoueusesFemmes();
 }
 
-// Afficher les joueurs disponibles pour les hommes
+// Fonction pour afficher les joueurs disponibles pour les hommes
 function afficherJoueursHommes() {
-    var imagesHommes = [
-        'images/joueur/hommes/badji.png',
-        'images/joueur/hommes/barbet.png',
-        'images/joueur/hommes/bokele.png',
-        'images/joueur/hommes/cassubie.png',
-        'images/joueur/hommes/delima.png',
-        'images/joueur/hommes/depussay.png',
-        'images/joueur/hommes/diaz.png',
-        'images/joueur/hommes/ekomié.png',
-        'images/joueur/hommes/elis.png',
-        'images/joueur/hommes/gregersen.png',
-        'images/joueur/hommes/ignatenko.png',
-        'images/joueur/hommes/livolant.png',
-        'images/joueur/hommes/louis-jean.png',
-        'images/joueur/hommes/marcelin.png',
-        'images/joueur/hommes/michelin.png',
-        'images/joueur/hommes/nsimba.png',
-        'images/joueur/hommes/pitu.png',
-        'images/joueur/hommes/sissokho.png',
-        'images/joueur/hommes/straczek.png',
-        'images/joueur/hommes/weissbeck.png'    ];
-
     if (!dejaVuHomme) {
         var conteneur = document.getElementById('joueursDisponibles');
         conteneur.innerHTML = '';
-
         conteneur.style.display = 'block';
         document.getElementById('joueusesDisponibles').style.display = 'none';
-
         imagesHommes.forEach(function(url) {
             if (!document.querySelector('img[src="' + url + '"]')) {
                 var img = createDraggableImage(url);
                 conteneur.appendChild(img);
             }
         });
-
         styleContainer(conteneur, '25vw', '72vh');
         dejaVuHomme = true;
         dejaVuFemme = false;
     }
 }
 
-// Afficher les joueuses disponibles pour les femmes
+// Fonction pour afficher les joueuses disponibles pour les femmes
 function afficherJoueusesFemmes() {
-    var imagesFemmes = [
-        'images/joueur/femmes/autin.png',
-        'images/joueur/femmes/dehri.png',
-        'images/joueur/femmes/diaz.png',
-        'images/joueur/femmes/haelewyn.png',
-        'images/joueur/femmes/herbert.png',
-        'images/joueur/femmes/lardez.png',
-        'images/joueur/femmes/lerond.png',
-        'images/joueur/femmes/liaigre.png',
-        'images/joueur/femmes/seguin.png',
-        'images/joueur/femmes/tarrieu.png'    ];
-
     if (!dejaVuFemme) {
         var conteneur = document.getElementById('joueusesDisponibles');
         conteneur.innerHTML = '';
-
         conteneur.style.display = 'block';
         document.getElementById('joueursDisponibles').style.display = 'none';
-
         imagesFemmes.forEach(function(url) {
             if (!document.querySelector('img[src="' + url + '"]')) {
                 var img = createDraggableImage(url);
                 conteneur.appendChild(img);
             }
         });
-
         styleContainer(conteneur, '25vw', '54vh');
         dejaVuFemme = true;
         dejaVuHomme = false;
     }
 }
+
+// Ajouter des événements de glisser-déposer aux images du terrain
+document.querySelectorAll('.terrain img').forEach(function(img) {
+    img.draggable = true;
+    img.ondragstart = function(event) {
+        drag(event);
+    };
+});
 
 // Créer une image draggable
 function createDraggableImage(url) {
@@ -113,8 +118,7 @@ function createDraggableImage(url) {
 function reactiverAttributs() {
     // Sélectionner toutes les div avec une classe commençant par 'zone'
     let zones = document.querySelectorAll('[class^="zone"]');
-    
-    // Parcourir chaque élément zone
+    // Parcourir chaque élément zone et ajouter les attrib
     zones.forEach(function(zone) {
         // Ajouter les attributs ondragover et ondrop
         zone.setAttribute('ondragover', 'allowDrop(event)');
@@ -146,33 +150,45 @@ function drag(event) {
 
     event.dataTransfer.setData("text", event.target.alt);
 }
+// ...
 
 // Drop
 function drop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
-    var img = document.createElement("img");
-    img.src = data;
-    img.alt = data;
 
-    // Si l'image est déplacée
-    console.log(img.dataset)
-    if (img.dataset.alt == "deplacer") {
-        console.log("1")
-        // Ajouter l'image à l'emplacement actuel
-        // Réactiver les événements ondragover et ondrop pour l'emplacement initial (si elle est différente de la zone1)
-        firstParent.setAttribute('ondragover', 'allowDrop(event)');
-        firstParent.setAttribute('ondrop', 'drop(event)');
-    
+    // Trouver l'image déplacée
+    var img = document.querySelector('img[src="' + data + '"]');
 
-        // Supprimer l'image de son emplacement initial
-        firstParent.removeChild(document.querySelector('img[alt="' + data + '"]'));
+    // Si l'image est déposée sur l'élément représentant la poubelle
+    if (event.target.classList.contains('poubelle')) {
+        // Supprimer l'image du terrain si elle est trouvée
+        if (img && img.parentNode) {
+            var originalZone = img.parentNode.closest('.zone');
+            img.parentNode.removeChild(img);
 
-        event.target.parentNode.appendChild(img);
+            // Ajouter l'URL de l'image à la liste appropriée
+            if (data.includes('femmes')) {
+                imagesFemmes.push(data);
+                // Créer une nouvelle image pour le joueur et l'ajouter à la liste des joueurs disponibles
+                var newImg = createDraggableImage(data);
+                document.getElementById('joueusesDisponibles').appendChild(newImg);
+            } else {
+                imagesHommes.push(data);
+                // Créer une nouvelle image pour le joueur et l'ajouter à la liste des joueurs disponibles
+                var newImg = createDraggableImage(data);
+                document.getElementById('joueursDisponibles').appendChild(newImg);
+            }
 
-    } else {
+            // Réactiver l'événement ondrop sur la zone d'origine
+            if (originalZone) {
+                originalZone.setAttribute('ondrop', 'drop(event)');
+            }
+        }
+    } else { // Si l'image est déplacée à l'intérieur du terrain
+        // Autres logiques de gestion du dépôt sur le terrain, si nécessaire
         // Ajouter l'attribut data-alt uniquement si l'image est déplacée
-        if (event.target.parentNode.className !== 'attaque' &&
+        if (img && event.target.parentNode.className !== 'attaque' &&
             event.target.parentNode.className !== 'milieu' &&
             event.target.parentNode.className !== 'defense' &&
             event.target.parentNode.className !== 'gardien') {
@@ -198,8 +214,11 @@ function drop(event) {
         event.target.parentNode.removeAttribute('ondrop');
         event.target.parentNode.removeAttribute('ondragover');
     }
-}
 
+    // Réactiver les attributs ondragover et ondrop pour la zone12
+    document.querySelector('.zone12').setAttribute('ondrop', 'drop(event)');
+    document.querySelector('.zone12').setAttribute('ondragover', 'allowDrop(event)');
+}
 
 // Compteur de joueurs restants
 function compteur() {
@@ -207,7 +226,6 @@ function compteur() {
     let restant = 11 - joueurs.length;
     return restant;
 }
-
 
 //valider equipe
 function valider() {
@@ -222,4 +240,6 @@ function valider() {
         alert("Il faut placer 11 joueurs");
     }
 }
+
+// Déclencher la réactivation des attributs pour les zones lorsque la fenêtre est complètement chargée
 window.onload = reactiverAttributs;
