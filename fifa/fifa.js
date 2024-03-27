@@ -165,6 +165,7 @@ function drop(event) {
         // Supprimer l'image du terrain si elle est trouvée
         if (img && img.parentNode) {
             var originalZone = img.parentNode.closest('.zone');
+            console.log(originalZone);
             img.parentNode.removeChild(img);
 
             // Ajouter l'URL de l'image à la liste appropriée
