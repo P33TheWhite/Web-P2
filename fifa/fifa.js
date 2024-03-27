@@ -127,6 +127,16 @@ function reactiverAttributs() {
 }
 
 
+function ajoutDropetDragover(parentNode) {
+    parentNode.addEventListener('dragover', function(event) {
+        event.preventDefault();
+    });
+    parentNode.addEventListener('drop', function(event) {
+        event.preventDefault();
+        drop(event);
+    });
+}
+
 // Styliser un conteneur
 function styleContainer(container, width, height) {
     container.style.marginTop = '1vh';
@@ -150,7 +160,7 @@ function drag(event) {
 
     event.dataTransfer.setData("text", event.target.alt);
 }
-// ...
+
 
 // Drop
 function drop(event) {
@@ -160,30 +170,31 @@ function drop(event) {
     // Trouver l'image déplacée
     var img = document.querySelector('img[src="' + data + '"]');
 
+    //rajout des elements drop et dragover
+    if(img.parentNode !== null && 
+        img.parentNode.id !== 'joueursDisponibles' && 
+        img.parentNode.id !== 'joueusesDisponibles'){
+        ajoutDropetDragover(img.parentNode);
+    }
+
     // Si l'image est déposée sur l'élément représentant la poubelle
     if (event.target.classList.contains('poubelle')) {
         // Supprimer l'image du terrain si elle est trouvée
-        if (img && img.parentNode) {
-            var originalZone = img.parentNode.closest('.zone');
-            console.log(originalZone);
+        if (img && img.parentNode){
             img.parentNode.removeChild(img);
-
+            
             // Ajouter l'URL de l'image à la liste appropriée
             if (data.includes('femmes')) {
                 imagesFemmes.push(data);
                 // Créer une nouvelle image pour le joueur et l'ajouter à la liste des joueurs disponibles
                 var newImg = createDraggableImage(data);
                 document.getElementById('joueusesDisponibles').appendChild(newImg);
+                
             } else {
                 imagesHommes.push(data);
                 // Créer une nouvelle image pour le joueur et l'ajouter à la liste des joueurs disponibles
                 var newImg = createDraggableImage(data);
                 document.getElementById('joueursDisponibles').appendChild(newImg);
-            }
-
-            // Réactiver l'événement ondrop sur la zone d'origine
-            if (originalZone) {
-                originalZone.setAttribute('ondrop', 'drop(event)');
             }
         }
     } else { // Si l'image est déplacée à l'intérieur du terrain
