@@ -1,9 +1,9 @@
 // Variables pour contrôler l'affichage des joueurs
-let dejaVuHomme = false;
-let dejaVuFemme = false;
-let firstParent = null;
+var dejaVuHomme = false;
+var dejaVuFemme = false;
+var firstParent = null;
 
-// Tableaux contenant les URLs des images des joueurs
+// Tableaux contenant les URLs des images des joueurs puis joueuses
 var imagesFemmes = [
     'images/joueur/femmes/autin.png',
     'images/joueur/femmes/dehri.png',
@@ -65,11 +65,12 @@ function afficherJoueursHommes() {
         document.getElementById('joueusesDisponibles').style.display = 'none';
         imagesHommes.forEach(function(url) {
             if (!document.querySelector('img[src="' + url + '"]')) {
-                var img = createDraggableImage(url);
+                var img = DraggableImg(url);
                 conteneur.appendChild(img);
             }
         });
-        styleContainer(conteneur, '25vw', '72vh');
+        //petit box
+        box(conteneur, '25vw', '72vh');
         dejaVuHomme = true;
         dejaVuFemme = false;
     }
@@ -84,26 +85,19 @@ function afficherJoueusesFemmes() {
         document.getElementById('joueursDisponibles').style.display = 'none';
         imagesFemmes.forEach(function(url) {
             if (!document.querySelector('img[src="' + url + '"]')) {
-                var img = createDraggableImage(url);
+                var img = DraggableImg(url);
                 conteneur.appendChild(img);
             }
         });
-        styleContainer(conteneur, '25vw', '54vh');
+        //petite box
+        box(conteneur, '25vw', '54vh');
         dejaVuFemme = true;
         dejaVuHomme = false;
     }
 }
 
-// Ajouter des événements de glisser-déposer aux images du terrain
-document.querySelectorAll('.terrain img').forEach(function(img) {
-    img.draggable = true;
-    img.ondragstart = function(event) {
-        drag(event);
-    };
-});
-
 // Créer une image draggable
-function createDraggableImage(url) {
+function DraggableImg(url) {
     var img = document.createElement('img');
     img.src = url;
     img.alt = url;
@@ -117,28 +111,28 @@ function createDraggableImage(url) {
 // Réactiver les attributs ondragover et ondrop pour les zones
 function reactiverAttributs() {
     // Sélectionner toutes les div avec une classe commençant par 'zone'
-    let zones = document.querySelectorAll('[class^="zone"]');
+    var zones = document.querySelectorAll('[class^="zone"]');
     // Parcourir chaque élément zone et ajouter les attrib
     zones.forEach(function(zone) {
         // Ajouter les attributs ondragover et ondrop
-        zone.setAttribute('ondragover', 'allowDrop(event)');
+        zone.setAttribute('ondragover', 'activerDrop(event)');
         zone.setAttribute('ondrop', 'drop(event)');
     });
 }
 
-
-function ajoutDropetDragover(parentNode) {
-    parentNode.addEventListener('dragover', function(event) {
+//ajout des attributs ondragover et ondrop
+function ajoutDropetDragover(elt) {
+    elt.addEventListener('dragover', function(event) {
         event.preventDefault();
     });
-    parentNode.addEventListener('drop', function(event) {
+    elt.addEventListener('drop', function(event) {
         event.preventDefault();
         drop(event);
     });
 }
 
 // Styliser un conteneur
-function styleContainer(container, width, height) {
+function box(container, width, height) {
     container.style.marginTop = '1vh';
     container.style.paddingTop = '1vh';
     container.style.paddingBottom = '1vh';
@@ -149,16 +143,15 @@ function styleContainer(container, width, height) {
 }
 
 // Permettre le drop
-function allowDrop(event) {
-    event.preventDefault();
+function activerDrop(elt) {
+    elt.preventDefault();
 }
 
-// Drag
-function drag(event) {
+//fonction utiliser pour les déplacement
+function drag(elt) {
     // Sauvegarde de l'élément parent initial
-    firstParent = event.target.parentNode;
-
-    event.dataTransfer.setData("text", event.target.alt);
+    firstParent = elt.target.parentNode;
+    elt.dataTransfer.setData("text", elt.target.alt);
 }
 
 
@@ -187,13 +180,13 @@ function drop(event) {
             if (data.includes('femmes')) {
                 imagesFemmes.push(data);
                 // Créer une nouvelle image pour le joueur et l'ajouter à la liste des joueurs disponibles
-                var newImg = createDraggableImage(data);
+                var newImg = DraggableImg(data);
                 document.getElementById('joueusesDisponibles').appendChild(newImg);
                 
             } else {
                 imagesHommes.push(data);
                 // Créer une nouvelle image pour le joueur et l'ajouter à la liste des joueurs disponibles
-                var newImg = createDraggableImage(data);
+                var newImg = DraggableImg(data);
                 document.getElementById('joueursDisponibles').appendChild(newImg);
             }
         }
@@ -217,7 +210,7 @@ function drop(event) {
 
         // Réactiver les événements ondragover et ondrop pour l'emplacement initial
         if (firstParent.className.startsWith('zone')) {
-            firstParent.setAttribute('ondragover', 'allowDrop(event)');
+            firstParent.setAttribute('ondragover', 'activerDrop(event)');
             firstParent.setAttribute('ondrop', 'drop(event)');
         }
     }
@@ -229,17 +222,17 @@ function drop(event) {
 
     // Réactiver les attributs ondragover et ondrop pour la zone12
     document.querySelector('.zone12').setAttribute('ondrop', 'drop(event)');
-    document.querySelector('.zone12').setAttribute('ondragover', 'allowDrop(event)');
+    document.querySelector('.zone12').setAttribute('ondragover', 'activerDrop(event)');
 }
 
 // Compteur de joueurs restants
 function compteur() {
-    let joueurs = document.querySelectorAll('img[data-alt="deplacer"]');
-    let restant = 11 - joueurs.length;
+    var joueurs = document.querySelectorAll('img[data-alt="deplacer"]');
+    var restant = 11 - joueurs.length;
     return restant;
 }
 
-//valider equipe
+//fonction de fin qui dirige vers la page de fin avec le contenue de .right
 function valider() {
     var joueurRestant = compteur();
     if (joueurRestant == 0) {
@@ -253,5 +246,5 @@ function valider() {
     }
 }
 
-// Déclencher la réactivation des attributs pour les zones lorsque la fenêtre est complètement chargée
+//execute la fonction reactiverAttributs au début de la page
 window.onload = reactiverAttributs;
