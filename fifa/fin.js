@@ -1,14 +1,16 @@
-function truc(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const content = decodeURIComponent(urlParams.get('content'));
+//prend le contenu passé en tant que paramètre 'content' dans l'URL puis injecte dans la page .right
+function formulaire(){
+    //extraction des paramètres de la requête GET
+    let extraction = new URLSearchParams(window.location.search);
+    let contenu = decodeURIComponent(extraction.get('content'));
 
-    // Mettez à jour le contenu de l'élément avec la classe 'right' une fois que le DOM est entièrement chargé
-    const rightElement = document.querySelector('.right');
+    //cherche element de .right et charge son contenu
+    let rightElement = document.querySelector('.right');
     if (rightElement) {
-        rightElement.innerHTML = content;
-    } else {
-        console.error("L'élément avec la classe 'right' n'a pas été trouvé.");
+        rightElement.innerHTML = contenu;
     }
 }
 
-window.onload=truc;
+
+//execute la fonction formulaire au début de la page
+window.onload=formulaire;

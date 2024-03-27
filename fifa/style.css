@@ -18,6 +18,8 @@ body {
     background-color: rgb(234, 64, 30);
     color: whitesmoke;
     border-radius: 0,2em;
+    width: 6vw;
+    height: 3vh;
 }
 
 .validation, .disponible, .box{
@@ -26,12 +28,13 @@ body {
     color: rgb(234, 64, 30);
     border: 0.2em solid black;
     width: 25vw;
-    height: 15vh;
+    height: auto;
+    padding-bottom: 1vh;
 }
 
 img {
     width : 30vw;
-    height: 87vh; /*à verif sur autre navigateur*/
+    height: 87vh;
     }
 
 .all{
@@ -117,25 +120,13 @@ img {
     left: 81vw;
 }
 
-#joueursDisponibles{
+#joueursDisponibles, #joueusesDisponibles{
     overflow-y: scroll;
 }
 
-#joueusesDisponibles{
-    overflow-y : scroll; 
-}
-
-#joueursDisponibles img {
-    width: 5vw;
-    height: 15vh;
-    margin-right: 0.5vw;
-    margin-top: 2vh;
-    cursor: pointer;
-}
-
-#joueusesDisponibles img {
-    width: 5vw;
-    height: 15vh;
+#joueursDisponibles img, #joueusesDisponibles img {
+    width: 7vw;
+    height: auto;
     margin-right: 0.5vw;
     margin-top: 2vh;
     cursor: pointer;
@@ -160,4 +151,27 @@ img[data-alt="deplacer"] {
     margin-top: 5vh;
     width: 5vw;
     height: auto;
+}
+
+
+/* Styles spécifiques pour les appareils mobiles */
+@media only screen and (max-width: 768px) {
+    .left, .center, .right {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .left{
+        flex: 1; /* Utilise tout l'espace disponible */
+        height: 35vh; /* Hauteur de 35% de la vue */
+    }
+    .center{
+        flex: 0 0 15vh; /* Ne pas s'étirer, hauteur de 15vh */
+    }
+    .right{
+        flex: 0 0 50vh; /* Ne pas s'étirer, hauteur de 50vh */
+    }
+    #joueursDisponibles, #joueusesDisponibles{
+        overflow-x: scroll;
+    }
 }
