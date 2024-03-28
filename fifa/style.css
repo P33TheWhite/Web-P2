@@ -18,7 +18,7 @@ body {
     background-color: rgb(234, 64, 30);
     color: whitesmoke;
     border-radius: 0,2em;
-    width: 6vw;
+    width: 7vw;
     height: 3vh;
 }
 
@@ -122,10 +122,11 @@ img {
 
 #joueursDisponibles, #joueusesDisponibles{
     overflow-y: scroll;
+    height: 5vh;
 }
 
 #joueursDisponibles img, #joueusesDisponibles img {
-    width: 7vw;
+    width: 6vw;
     height: auto;
     margin-right: 0.5vw;
     margin-top: 2vh;
