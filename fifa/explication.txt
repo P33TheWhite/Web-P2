@@ -1,0 +1,10 @@
+Gestionnaire d'équipe des Girondins de Bordeaux
+
+Dans ce jeu, les utilisateurs seraient chargés de composer une équipe de football en utilisant le "drag and drop".
+L'objectif est de créer la composition des Girondins pour les matchs et championnats futurs dans la vraie vie.
+Dans l'ensemble, ce jeu permet d'offrir aux fans des Girondins de Bordeaux un moyen de créer leur propre équipe.
+
+PS : - Pour supprimer un joueur, il suffit de le placer sur l'image de poubelle.
+       - Chaque joueur/joueuse ne peut être placés qu'une fois.
+      - Pour valider l'équipe, il faut 11 joueurs/joueuses sur le terrain.
+      - Pour placer les joueurs/joueuses, il faut bien viser la croix.

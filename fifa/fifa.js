@@ -59,17 +59,17 @@ function reinitialiserEquipe() {
 // Fonction pour afficher les joueurs disponibles pour les hommes
 function afficherJoueursHommes() {
     if (!dejaVuHomme) {
-        var conteneur = document.getElementById('joueursDisponibles');
-        conteneur.innerHTML = '';
-        conteneur.style.display = 'block';
+        var contenu = document.getElementById('joueursDisponibles');
+        contenu.innerHTML = '';
+        contenu.style.display = 'block';
         document.getElementById('joueusesDisponibles').style.display = 'none';
         imagesHommes.forEach(function(url) {
             if (!document.querySelector('img[src="' + url + '"]')) {
                 var img = DraggableImg(url);
-                conteneur.appendChild(img);
+                contenu.appendChild(img);
             }
         });
-        box(conteneur, '25vw', '72vh');
+        box(contenu, '25vw', '72vh');
         dejaVuHomme = true;
         dejaVuFemme = false;
     }
@@ -78,17 +78,17 @@ function afficherJoueursHommes() {
 // Fonction pour afficher les joueuses disponibles pour les femmes
 function afficherJoueusesFemmes() {
     if (!dejaVuFemme) {
-        var conteneur = document.getElementById('joueusesDisponibles');
-        conteneur.innerHTML = '';
-        conteneur.style.display = 'block';
+        var contenu = document.getElementById('joueusesDisponibles');
+        contenu.innerHTML = '';
+        contenu.style.display = 'block';
         document.getElementById('joueursDisponibles').style.display = 'none';
         imagesFemmes.forEach(function(url) {
             if (!document.querySelector('img[src="' + url + '"]')) {
                 var img = DraggableImg(url);
-                conteneur.appendChild(img);
+                contenu.appendChild(img);
             }
         });
-        box(conteneur, '25vw', '72vh');
+        box(contenu, '25vw', '72vh');
         dejaVuFemme = true;
         dejaVuHomme = false;
     }
@@ -129,7 +129,7 @@ function ajoutDropetDragover(elt) {
     });
 }
 
-// Styliser un conteneur
+// Styliser un contenu
 function box(container, width, height) {
     container.style.marginTop = '1vh';
     container.style.paddingTop = '1vh';
@@ -233,9 +233,9 @@ function compteur() {
 function valider() {
     var joueurRestant = compteur();
     if (joueurRestant == 0) {
-        var result = document.querySelector('.right').innerHTML;
-        var encoded = encodeURIComponent(result);
-        var destinationUrl = 'fin.html?content=' + encoded;
+        var resultat = document.querySelector('.right').innerHTML;
+        var encoder = encodeURIComponent(resultat);
+        var destinationUrl = 'fin.html?content=' + encoder;
         // Rediriger vers l'URL construite
         window.location.href = destinationUrl;
     } else {
