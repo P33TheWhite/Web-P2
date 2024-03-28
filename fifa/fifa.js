@@ -69,7 +69,6 @@ function afficherJoueursHommes() {
                 conteneur.appendChild(img);
             }
         });
-        //petit box
         box(conteneur, '25vw', '72vh');
         dejaVuHomme = true;
         dejaVuFemme = false;
@@ -89,14 +88,13 @@ function afficherJoueusesFemmes() {
                 conteneur.appendChild(img);
             }
         });
-        //petite box
-        box(conteneur, '25vw', '54vh');
+        box(conteneur, '25vw', '72vh');
         dejaVuFemme = true;
         dejaVuHomme = false;
     }
 }
 
-// Créer une image draggable
+// Créer une image déplacable
 function DraggableImg(url) {
     var img = document.createElement('img');
     img.src = url;
@@ -112,7 +110,7 @@ function DraggableImg(url) {
 function reactiverAttributs() {
     // Sélectionner toutes les div avec une classe commençant par 'zone'
     var zones = document.querySelectorAll('[class^="zone"]');
-    // Parcourir chaque élément zone et ajouter les attrib
+    // Parcourir chaque élément zone et ajouter les attributs
     zones.forEach(function(zone) {
         // Ajouter les attributs ondragover et ondrop
         zone.setAttribute('ondragover', 'activerDrop(event)');
@@ -155,7 +153,7 @@ function drag(elt) {
 }
 
 
-// Drop
+// fonction drop
 function drop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
@@ -191,7 +189,6 @@ function drop(event) {
             }
         }
     } else { // Si l'image est déplacée à l'intérieur du terrain
-        // Autres logiques de gestion du dépôt sur le terrain, si nécessaire
         // Ajouter l'attribut data-alt uniquement si l'image est déplacée
         if (img && event.target.parentNode.className !== 'attaque' &&
             event.target.parentNode.className !== 'milieu' &&
@@ -214,7 +211,7 @@ function drop(event) {
             firstParent.setAttribute('ondrop', 'drop(event)');
         }
     }
-
+    //suppression d'attribut
     if (event.target.parentNode.className.startsWith('zone') && event.target.parentNode.className !== firstParent.className) {
         event.target.parentNode.removeAttribute('ondrop');
         event.target.parentNode.removeAttribute('ondragover');

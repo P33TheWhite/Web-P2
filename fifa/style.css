@@ -122,7 +122,6 @@ img {
 
 #joueursDisponibles, #joueusesDisponibles{
     overflow-y: scroll;
-    height: 5vh;
 }
 
 #joueursDisponibles img, #joueusesDisponibles img {

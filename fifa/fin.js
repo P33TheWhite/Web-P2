@@ -9,6 +9,11 @@ function formulaire(){
     if (rightElement) {
         rightElement.innerHTML = contenu;
     }
+    //desactiver le allowdrop des images
+    var images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.setAttribute('draggable', 'false');
+    });
 }
 
 
